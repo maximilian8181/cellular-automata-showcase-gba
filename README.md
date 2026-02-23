@@ -18,4 +18,4 @@ A curated showcase of elementary cellular automata implemented on the Game Boy A
 - Each rule is handled by explicitly evaluating the 8 possible three-cell neighborhood configurations
 - Rule numbers go from decimal to binary for visual representation purposes
 - Automata states are precomputed before entering the gameloop and stored as "snapshots"
-- Fade transtitions utilize REG_BLDCNT and REG_BLDY hardware registers 
+- Fade transitions utilize REG_BLDCNT and REG_BLDY hardware registers 
