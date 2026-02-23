@@ -12,3 +12,10 @@ A curated showcase of elementary cellular automata implemented on the Game Boy A
 - Rule visualization as an abstract 8-bit coloured square representation
 - Hardware fades via GBA blending registers
 - Button navigation
+
+## Technical Notes
+
+- Each rule is handled by explicitly evaluating the 8 possible three-cell neighborhood configurations
+- Rule numbers go from decimal to binary for visual representation purposes
+- Automata states are precomputed before entering the gameloop and stored as "snapshots"
+- Fade transtitions utilize REG_BLDCNT and REG_BLDY hardware registers 
