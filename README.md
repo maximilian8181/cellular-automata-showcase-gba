@@ -5,3 +5,10 @@
 </p>
 
 A curated showcase of elementary cellular automata implemented on the Game Boy Advance using Mode 3. 
+
+## Features
+
+- A selection of Wolfram's 1D cellular automata rules (30, 90, 94, 109, 110, 150)
+- Rule visualization as an abstract 8-bit coloured square representation
+- Hardware fades via GBA blending registers
+- Button navigation
