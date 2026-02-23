@@ -19,3 +19,7 @@ A curated showcase of elementary cellular automata implemented on the Game Boy A
 - Rule numbers go from decimal to binary for visual representation purposes
 - Automata states are precomputed before entering the gameloop and stored as "snapshots"
 - Fade transitions utilize REG_BLDCNT and REG_BLDY hardware registers 
+
+## Controls
+
+- L / R: Switch rule
