@@ -10,8 +10,8 @@ typedef enum {
 	FADE_IN
 } Transition;
 
-u8 calculateState(u8 a, u8 b, u8 c, int rule);
-int getBit(int rule, int position);
+u8 calculateState(u8 a, u8 b, u8 c, u8 rule);
+u8 getBit(u8 rule, u8 position);
 
 int main(void)
 {
@@ -28,8 +28,8 @@ int main(void)
 
 	u8 next_cell_state = 0;
 	const int generations = 32;
-	int automaton_rules[NUM_RULES] = {30, 90, 94, 109, 110, 150};
-	int rule_bits_to_display[NUM_BITS] = {0, 0, 0, 1, 1, 1, 1, 0};
+	u8 automaton_rules[NUM_RULES] = {30, 90, 94, 109, 110, 150};
+	u8 rule_bits_to_display[NUM_BITS] = {0, 0, 0, 1, 1, 1, 1, 0};
 
 	u8 grids[NUM_RULES][generations][NUM_CELLS];
 	int color_intensities_1[32] = {
@@ -162,14 +162,14 @@ int main(void)
 				if(left_or_right == 1) {
 					current_rule_index = (current_rule_index >= 5) ? 0 : current_rule_index + 1;
 					for(int bit_in_rule = 0; bit_in_rule < NUM_BITS; bit_in_rule++) {
-						rule_bits_to_display[bit_in_rule] = getBit(automaton_rules[current_rule_index], bit_in_rule);
+						rule_bits_to_display[bit_in_rule] = getBit(automaton_rules[current_rule_index], NUM_BITS - 1 - bit_in_rule);
 					}
 					tr = FADE_IN;
 				}
 				else {
 					current_rule_index = (current_rule_index <= 0) ? 5 : current_rule_index - 1;
 					for(int bit_in_rule = 0; bit_in_rule < NUM_BITS; bit_in_rule++) {
-						rule_bits_to_display[bit_in_rule] = getBit(automaton_rules[current_rule_index], bit_in_rule);
+						rule_bits_to_display[bit_in_rule] = getBit(automaton_rules[current_rule_index], NUM_BITS - 1 - bit_in_rule);
 					}
 					tr = FADE_IN;
 				}
@@ -212,7 +212,7 @@ int main(void)
 	}
 }
 
-u8 calculateState(u8 a, u8 b, u8 c, int rule) {
+u8 calculateState(u8 a, u8 b, u8 c, u8 rule) {
 	u8 sum = (a << 2) + (b << 1) + (c << 0);
 	u8 state = 0;
 
@@ -288,6 +288,6 @@ u8 calculateState(u8 a, u8 b, u8 c, int rule) {
 	return state;
 }
 
-int getBit(int rule, int position) {
-	return (rule >> (7 - position)) & 1;
+u8 getBit(u8 rule, u8 position) {
+	return (rule >> position) & 1;
 }
